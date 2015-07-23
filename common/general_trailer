@@ -1,0 +1,51 @@
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      switch ( $("#usertype").val() ) {
+        case "member":
+             $("#owner-dropdown").addClass("disabled");
+             $("#owner-login").hide();
+             $("#owner-search").hide();
+             $("#owner-add").hide();
+             $("#owner-update").hide();
+             $("#owner-profile").hide();
+             $("#owner-logout").hide();
+
+             $("#member-dropdown").removeClass("disabled");
+             $("#member-login").hide();
+             $("#member-profile").show();
+             $("#member-logout").show();
+             break;
+        case "owner":
+             $("#owner-dropdown").removeClass("disabled");
+             $("#owner-login").hide();
+             $("#owner-search").show();
+             $("#owner-add").show();
+             $("#owner-update").show();
+             $("#owner-profile").show();
+             $("#owner-logout").show();
+
+             $("#member-dropdown").addClass("disabled");
+             $("#member-login").hide();
+             $("#member-profile").hide();
+             $("#member-logout").hide();
+             break;
+        default:
+             $("#owner-dropdown").removeClass("disabled");
+             $("#owner-login").show();
+             $("#owner-search").hide();
+             $("#owner-add").hide();
+             $("#owner-update").hide();
+             $("#owner-profile").hide();
+             $("#owner-logout").hide();
+
+             $("#member-dropdown").removeClass("disabled");
+             $("#member-login").show();
+             $("#member-profile").hide();
+             $("#member-logout").hide();
+             break;
+      } // End switch
+    }); //End document ready
+  </script>
