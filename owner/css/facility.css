@@ -1,0 +1,48 @@
+div.mainform {
+	width:100%;
+    border:1px solid #000;
+}
+
+form 
+{
+	width: 40%;
+    margin-right: 30%;
+    margin-left: 30%;
+	background-color:gray;
+}
+
+form input[type='submit']  
+{
+        width: 70px;
+}
+
+label{
+	float: left;
+	width: 200px;
+}
+
+div.submitWrapper  {
+    text-align: center;    
+}    
+
+.header{
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 0;
+	position:fixed;
+}
+
+h2 {
+	color : #000000;
+	text-align : center;
+	font-family: "SIMPSON";
+}
+
+h1 {
+	color : #000000;
+	text-align : center;
+	font-family: "SIMPSON";
+}
+
+
+

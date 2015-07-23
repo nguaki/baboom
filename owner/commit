@@ -1,0 +1,1126 @@
+analytics.html:	<title>4BABOOM.COM - Analytics</title>
+Claim_A_Facility.php.bak:# 			 01-07-15      Added logic to store primary owner to rcfe table.
+Claim_A_Facility.php.bak:#            01-12-15      Removed UpdateClaim() function.  We no longer carry
+Claim_A_Facility.php.bak:	$add_post_res = $mysqli->query($UpdateCommand) or die($mysqli->error);
+Claim_A_Facility.php.bak:	$objGetResult = $mysqli->query( $QueryResultSet );
+Claim_A_Facility.php.bak:#  INPUT:  $Facility_Index - Unique ID of the facility table.
+Claim_A_Facility.php.bak:#          $Owner_Index - Unique ID of the owner table.
+Claim_A_Facility.php.bak:#  ----    ------   -------
+Claim_A_Facility.php.bak:#          01-07-15  Added timestamp.
+Claim_A_Facility.php.bak:	$add_post_res = $mysqli->query($InsertCommand);
+Claim_A_Facility.php.bak:	#or die($mysqli->error);
+Claim_A_Facility.php.bak:		echo "No Success: $mysqli->error";
+Claim_A_Facility.php.bak:	$objGetResult = $mysqli->query( $QueryResultSet );
+Claim_A_Facility.php.bak:	if( $objGetResult ) #remember that even if there is no single row has returned, it will return an object which is non-zero.  
+Claim_A_Facility.php.bak:		$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+Claim_A_Facility.php.bak:		$objGetResult->free_result();
+Claim_A_Facility.php.bak:		if( $objGetResult ) #remember that even if there is no single row has returned, it will return an object which is non-zero.  
+Claim_A_Facility.php.bak:			$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+Claim_A_Facility.php.bak:				#Owner index is an auto-increment so it starts with 0.
+Claim_A_Facility.php.bak:			$objGetResult->free_result();
+Claim_A_Facility.php.bak:	$mysqli->close();
+Claim_A_Facility.php.bak:<?php include( '../common/header.php' );?> <!--worked -->
+index.html:  <title>4BABOOM.COM - FREE Senior Online Community</title>
+index.html:  <meta charset="utf-8">
+index.html:  <meta name="viewport" content="width=device-width, initial-scale=1">
+index.html:      background-image: url("/img/sample1.jpg");
+index.html:<!-- Page Header -->
+index.html:  <div class="col-sm-12">
+index.html:    <h3><img src="/img/4baboom-logo.jpg" alt="4BABOOM LOGO" class="img-rounded" style="width:75px;height:75px"></h3>
+index.html:    <h3 style="text-shadow:5px 5px 5px #FF00FF"><a href="/index-4baboom.php"> Click here to return to 4baboom home page </a></h3>
+index.html:<!-- Home Page End -->
+Load_Form_to_claim_Facility.php.bak:<!----------------------------------------------------------------->
+Load_Form_to_claim_Facility.php.bak:<!- FILE:                                                         ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-DESCRIPTION:                                                   ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-WHO      WHEN          WHAT                                    ->
+Load_Form_to_claim_Facility.php.bak:<!------    -------       -------------------------------------   ->
+Load_Form_to_claim_Facility.php.bak:<!-         01-22-15      Moved to Linux and made changes         ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!-                                                               ->
+Load_Form_to_claim_Facility.php.bak:<!----------------------------------------------------------------->
+Load_Form_to_claim_Facility.php.bak:<?php include( '../common/header.php' );?> <!--worked -->
+Load_Form_to_claim_Facility.php.bak:						<label for="email">E-mail address:</label>
+owner_activate_email.php:#--------------------------------
+owner_activate_email.php:#          03-21-15 Implemented email activation.
+owner_activate_email.php:#          06-12-15 Transferrred from windows.
+owner_activate_email.php:#          06-25-15 Since this is running in persistent DB,  there is no need
+owner_activate_email.php:#                   to close DB.  Please read  php.net/manual/en/features.persistent-connections.php.
+owner_activate_email.php:	$objGetResult = $mysqli->query( $QueryResultSet );
+owner_activate_email.php:	if( $objGetResult ) #remember that even if there is no single row has returned, it will return an object which is non-zero.  
+owner_activate_email.php:		$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+owner_activate_email.php:				$mysqli->autocommit( FALSE );
+owner_activate_email.php:				if( !$mysqli->query( $UpdateSQL) )
+owner_activate_email.php:					echo "CALL failed: (" . $mysqli->errno . ") " . $mysqli->error;
+owner_activate_email.php:			        if( $mysqli->commit())
+owner_activate_email.php:                			$mysqli->rollback();
+owner_activate_email.php:		$objGetResult->free_result();
+owner_activate_email.php:	//$mysqli->close();    //No need to close() each time.
+owner_add_facility.php://  DATE;  06-26-15
+owner_add_facility.php://              06-27-15       Created.
+owner_add_facility.php://              07-08-25       Added rollback() in case insert transaction doesn't go thru.
+owner_add_facility.php:	$mysqli->autocommit(FALSE);
+owner_add_facility.php:	$add_post_res = $mysqli->query($UpdateCommand); # or die($mysqli->error);
+owner_add_facility.php:	if( $mysqli->commit())
+owner_add_facility.php:		$mysqli->rollback();
+owner_add_facility.php:	$mysqli->autocommit( FALSE );
+owner_add_facility.php:	$add_post_res = $mysqli->query($InsertCommand);
+owner_add_facility.php:	if( !$mysqli->commit())
+owner_add_facility.php:		$mysqli->rollback();
+owner_add_facility.php:	#or die($mysqli->error);
+owner_add_facility.php:		echo "No Success: $mysqli->error";
+owner_add_facility.php://             06-20-15    Added $SsfeAddress as an additional check.
+owner_add_facility.php:	$objGetResult = $mysqli->query( $QueryResultSet );
+owner_add_facility.php:	// remember that even if there is no single row has returned, it will return an object which is non-zero.  
+owner_add_facility.php:		$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+owner_add_facility.php:		$objGetResult->free_result();
+owner_add_facility.php:	$objCheckIfARowExists1 = $mysqli->query( $sCheckIfARowExists1 ) or die( $mysqli->error );
+owner_add_facility.php:	//$objCheckIfARowExists1 = $mysqli->query( $sCheckIfARowExists1 ) or echo "{$mysqli->error}";
+owner_add_facility.php:		$anArray = $objCheckIfARowExists1->fetch_array( MYSQLI_ASSOC );
+owner_add_facility.php:		$objCheckIfARowExists1->free_result();
+owner_add_facility.php:		$mysqli->autocommit(FALSE);
+owner_add_facility.php:		$AddAFacility = $mysqli->query($sInsertQuery);  # or die($mysqli->error);
+owner_add_facility.php:		if( $mysqli->commit())
+owner_add_facility.php:			$mysqli->rollback();
+owner_add_facility.php:			// Owner index is an auto-increment so it starts with 0.
+owner_add_facility.php:		$objCheckIfARowExists1 = $mysqli->query( $sCheckIfARowExists1 ) or die( $mysqli->erro );
+owner_add_facility.php:			$anArray = $objCheckIfARowExists1->fetch_array( MYSQLI_ASSOC );
+owner_add_facility.php:			$objCheckIfARowExists1->free_result();
+owner_add_facility.php:			$mysqli->autocommit(FALSE);
+owner_add_facility.php:			//$CurrTime = date( 'Y-m-d H-i-s');
+owner_add_facility.php:			$mysqli->query($sInsertFacility); #or die($mysqli->error);
+owner_add_facility.php:			if( $mysqli->commit())
+owner_add_facility.php:				$mysqli->rollback();
+owner_add_facility.php:		$objCheckIfARowExists2 = $mysqli->query( $sCheckIfARowExists2 ) or die( $mysqli->error );
+owner_add_facility.php:			$anArray = $objCheckIfARowExists2->fetch_array( MYSQLI_ASSOC );
+owner_add_facility.php:			$objCheckIfARowExists2->free_result();
+owner_add_facility.php:			//$CurrTime = date( 'Y-m-d H-i-s');
+owner_add_facility.php:			$mysqli->autocommit(FALSE);
+owner_add_facility.php:			$mysqli->query($sInsertFacilityService) or die($mysqli->error);
+owner_add_facility.php:			if( $mysqli->commit())
+owner_add_facility.php:				$mysqli->rollback();
+owner_add_facility.php:	echo "---------------------------------------</br>";
+owner_add_facility.php:		$objCheckIfARowExists3 = $mysqli->query( $sCheckIfARowExists3 ) or die( $mysqli->error );
+owner_add_facility.php:			$anArray = $objCheckIfARowExists3->fetch_array( MYSQLI_ASSOC );
+owner_add_facility.php:			$objCheckIfARowExists3->free_result();
+owner_add_facility.php:			//$CurrTime = date( 'Y-m-d H-i-s');
+owner_add_facility.php:			$mysqli->autocommit(FALSE);
+owner_add_facility.php:			$mysqli->query($sUpdateFacilityPrice_Special_Available);# or die($mysqli->error);
+owner_add_facility.php:			if( $mysqli->commit())
+owner_add_facility.php:				$mysqli->rollback();
+owner_add_facility.php.bak:#   ------     ---------    ----------
+owner_add_facility.php.bak:#   Bac        06-11-15     Created.
+owner_add_facility.php.bak:	<meta charset="utf-8"/>
+owner_add_facility.php.bak:	<meta name="viewport" content="width=device-width, initial-scale=1">
+owner_add_facility.php.bak:	<?php include( '../common/header.php' );?> <!--worked -->
+owner_add_facility.php.bak:	      background-image: url("/img/sample1.jpg");
+owner_add_facility.php.bak:	  <!-- Added for tabs -->
+owner_add_facility.php.bak:	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/start/jquery-ui.css">
+owner_add_facility.php.bak:	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+owner_add_facility.php.bak:	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+owner_add_facility.php.bak:	<!-- Need these break lines to prevent the navigation bar hiding the top lines. -->
+owner_add_facility.php.bak:<!-- Facility Detail -->
+owner_add_facility.php.bak:        <div class="container-fluid">
+owner_add_facility.php.bak:          <div class="form-group">
+owner_add_facility.php.bak:	    <li><a href="#bbtab-1"><span>*General Admin</span></a></li>
+owner_add_facility.php.bak:	    <li><a href="#bbtab-2"><span>Accommodations</span></a></li>
+owner_add_facility.php.bak:	    <li><a href="#bbtab-3"><span>Amenities & Services</span></a></li>
+owner_add_facility.php.bak:	    <li><a href="#bbtab-4"><span>Pricing</span></a></li>
+owner_add_facility.php.bak:	    <li><a href="#bbtab-5"><span>Map & Direction</span></a></li>
+owner_add_facility.php.bak:	  <div id="bbtab-1">
+owner_add_facility.php.bak:	    <div class="container-fluid">
+owner_add_facility.php.bak:            <div class="form-group">
+owner_add_facility.php.bak:		 <div class="col-md-4">
+owner_add_facility.php.bak:                 <!-- form action="Add_new_facility.php" method="get" autocomplete="on" -->
+owner_add_facility.php.bak:		 <div class="col-md-8" style="color:blue;background-color:lightgray;">
+owner_add_facility.php.bak:	  <div id="bbtab-2" style="color:blue;">
+owner_add_facility.php.bak:            <div class="container-fluid">
+owner_add_facility.php.bak:            <div class="form-group">
+owner_add_facility.php.bak:            There are comfortable and affordable shared room as well as semi-private and private rooms for more needed quiet & privacy.</p>
+owner_add_facility.php.bak:            <input type="checkbox" name="semi-private" value="yes"> Semi-Private Room <br>
+owner_add_facility.php.bak:            <input type="checkbox" name="secure-quiet" value="yes"> Secure and quiet neighborhood <br>
+owner_add_facility.php.bak:            <input type="checkbox" name="light-spacious" value="yes"> Light and spacious rooms <br>
+owner_add_facility.php.bak:            <input type="checkbox" name="alarm-access" value="yes"> Fire Alarms & Wheelchair Access <br>
+owner_add_facility.php.bak:	  <div id="bbtab-3" style="color:blue;">
+owner_add_facility.php.bak:            <div class="container-fluid">
+owner_add_facility.php.bak:            <div class="form-group">
+owner_add_facility.php.bak:            Included amenities & services - <br>
+owner_add_facility.php.bak:            <input type="checkbox" name="social-events" value="yes"> Social events (i.e. birthday & holiday parties) <br>
+owner_add_facility.php.bak:            Fee based services - <br>
+owner_add_facility.php.bak:            <input type="checkbox" name="sepcial-diet" value="yes"> Special diet <br>
+owner_add_facility.php.bak:	  <div id="bbtab-4" style="color:blue;">
+owner_add_facility.php.bak:	    <div class="container-fluid">
+owner_add_facility.php.bak:		 <div class="col-md-4">
+owner_add_facility.php.bak:		     <dt>Semi-private:</dt><dd>From<input type="number" name="semi_min" min="1500" max="8000"><br>__To<input type="number" name="semi_max" min="2000" max="10000"></dd>
+owner_add_facility.php.bak:                                                  <input type="number" name="avail_semi" min="0" max="1000">Semi-private<br>
+owner_add_facility.php.bak:         <div class="col-md-8" style="background-color:lightgray;">
+owner_add_facility.php.bak:  <div id="bbtab-5">
+owner_add_facility.php.bak:    <div class="container-fluid">
+owner_add_facility.php.bak:        <div class="col-md-offset-4 col-md-8" style="color:blue;background-color:lightgray;">
+owner_add_facility.php.bak:</div> <!-- tabs end --> 
+owner_add_facility.php.bak:</div> <!-- tabs container end -->
+owner_add_full_facility_front_end.php:#   ------     ---------    ----------
+owner_add_full_facility_front_end.php:#   Bac        06-27-15     Created.
+owner_add_full_facility_front_end.php:	<meta charset="utf-8"/>
+owner_add_full_facility_front_end.php:	<meta name="viewport" content="width=device-width, initial-scale=1">
+owner_add_full_facility_front_end.php:	<?php include( '../common/header.php' );?> <!--worked -->
+owner_add_full_facility_front_end.php:	      background-image: url("/img/sample1.jpg");
+owner_add_full_facility_front_end.php:	  <!-- Added for tabs -->
+owner_add_full_facility_front_end.php:	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/start/jquery-ui.css">
+owner_add_full_facility_front_end.php:	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+owner_add_full_facility_front_end.php:	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+owner_add_full_facility_front_end.php:	<!-- Need these break lines to prevent the navigation bar hiding the top lines. -->
+owner_add_full_facility_front_end.php:<!-- Facility Detail -->
+owner_add_full_facility_front_end.php:        <div class="container-fluid">
+owner_add_full_facility_front_end.php:          <div class="form-group">
+owner_add_full_facility_front_end.php:	    <li><a href="#bbtab-1"><span>*General Admin</span></a></li>
+owner_add_full_facility_front_end.php:	    <li><a href="#bbtab-2"><span>Accommodations</span></a></li>
+owner_add_full_facility_front_end.php:	    <li><a href="#bbtab-3"><span>Amenities & Services</span></a></li>
+owner_add_full_facility_front_end.php:	    <li><a href="#bbtab-4"><span>Pricing</span></a></li>
+owner_add_full_facility_front_end.php:	    <li><a href="#bbtab-5"><span>Map & Direction</span></a></li>
+owner_add_full_facility_front_end.php:	  <div id="bbtab-1">
+owner_add_full_facility_front_end.php:	    <div class="container-fluid">
+owner_add_full_facility_front_end.php:            <div class="form-group">
+owner_add_full_facility_front_end.php:		 <div class="col-md-4">
+owner_add_full_facility_front_end.php:                 <!-- form action="Add_new_facility.php" method="get" autocomplete="on" -->
+owner_add_full_facility_front_end.php:		 <div class="col-md-8" style="color:blue;background-color:lightgray;">
+owner_add_full_facility_front_end.php:	  <div id="bbtab-2" style="color:blue;">
+owner_add_full_facility_front_end.php:            <div class="container-fluid">
+owner_add_full_facility_front_end.php:            <div class="form-group">
+owner_add_full_facility_front_end.php:            There are comfortable and affordable shared room as well as semi-private and private rooms for more needed quiet & privacy.</p>
+owner_add_full_facility_front_end.php:            <!--<input type="checkbox" name="private" value="yes"> Private Room  <br>
+owner_add_full_facility_front_end.php:            <input type="checkbox" name="semi-private" value="yes"> Semi-Private Room <br>
+owner_add_full_facility_front_end.php:            <input type="checkbox" name="secure-quiet" value="yes"> Secure and quiet neighborhood <br>
+owner_add_full_facility_front_end.php:            <input type="checkbox" name="light-spacious" value="yes"> Light and spacious rooms <br>
+owner_add_full_facility_front_end.php:            <input type="checkbox" name="alarm-access" value="yes"> Fire Alarms & Wheelchair Access <br>
+owner_add_full_facility_front_end.php:		-->
+owner_add_full_facility_front_end.php:            <input type="checkbox" name="accomodation[]" id="accomodation" value="2" > Semi-Private Room <br>
+owner_add_full_facility_front_end.php:	  <div id="bbtab-3" style="color:blue;">
+owner_add_full_facility_front_end.php:            <div class="container-fluid">
+owner_add_full_facility_front_end.php:            <div class="form-group">
+owner_add_full_facility_front_end.php:            Included amenities & services - <br>
+owner_add_full_facility_front_end.php:  <!--          <input type="checkbox" name="meals" value="yes"> Well balanced & nutritious meals and snacks <br>
+owner_add_full_facility_front_end.php:            <input type="checkbox" name="social-events" value="yes"> Social events (i.e. birthday & holiday parties) <br>
+owner_add_full_facility_front_end.php:            Fee based services - <br>
+owner_add_full_facility_front_end.php:            <input type="checkbox" name="sepcial-diet" value="yes"> Special diet <br>
+owner_add_full_facility_front_end.php:-->
+owner_add_full_facility_front_end.php:            Fee based services - <br>
+owner_add_full_facility_front_end.php:	  <div id="bbtab-4" style="color:blue;">
+owner_add_full_facility_front_end.php:	    <div class="container-fluid">
+owner_add_full_facility_front_end.php:		 <div class="col-md-4">
+owner_add_full_facility_front_end.php:		     <dt>Semi-private:</dt><dd>From<input type="number" name="semi_min" min="1500" max="8000"><br>__To<input type="number" name="semi_max" min="2000" max="10000"></dd>
+owner_add_full_facility_front_end.php:                                                  <input type="number" name="avail_semi" min="0" max="1000">Semi-private<br>
+owner_add_full_facility_front_end.php:         <div class="col-md-8" style="background-color:lightgray;">
+owner_add_full_facility_front_end.php:  <div id="bbtab-5">
+owner_add_full_facility_front_end.php:    <div class="container-fluid">
+owner_add_full_facility_front_end.php:        <div class="col-md-offset-4 col-md-8" style="color:blue;background-color:lightgray;">
+owner_add_full_facility_front_end.php:</div> <!-- tabs end --> 
+owner_add_full_facility_front_end.php:</div> <!-- tabs container end -->
+owner_add_full_facility.php.bkp:#   ------     ---------    ----------
+owner_add_full_facility.php.bkp:#   Bac        06-11-15     Created.
+owner_add_full_facility.php.bkp:$mysqli->close();
+owner_add_full_facility.php.bkp:	<meta charset="utf-8"/>
+owner_add_full_facility.php.bkp:	<meta name="viewport" content="width=device-width, initial-scale=1">
+owner_add_full_facility.php.bkp:	<?php include( '../common/header.php' );?> <!--worked -->
+owner_add_full_facility.php.bkp:	      background-image: url("/img/sample1.jpg");
+owner_add_full_facility.php.bkp:	  <!-- Added for tabs -->
+owner_add_full_facility.php.bkp:	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/start/jquery-ui.css">
+owner_add_full_facility.php.bkp:	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+owner_add_full_facility.php.bkp:	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+owner_add_full_facility.php.bkp:	<!-- Need these break lines to prevent the navigation bar hiding the top lines. -->
+owner_add_full_facility.php.bkp:<!-- Facility Detail -->
+owner_add_full_facility.php.bkp:        <div class="container-fluid">
+owner_add_full_facility.php.bkp:          <div class="form-group">
+owner_add_full_facility.php.bkp:	    <li><a href="#bbtab-1"><span>*General Admin</span></a></li>
+owner_add_full_facility.php.bkp:	    <li><a href="#bbtab-2"><span>Accommodations</span></a></li>
+owner_add_full_facility.php.bkp:	    <li><a href="#bbtab-3"><span>Amenities & Services</span></a></li>
+owner_add_full_facility.php.bkp:	    <li><a href="#bbtab-4"><span>Pricing</span></a></li>
+owner_add_full_facility.php.bkp:	    <li><a href="#bbtab-5"><span>Map & Direction</span></a></li>
+owner_add_full_facility.php.bkp:	  <div id="bbtab-1">
+owner_add_full_facility.php.bkp:	    <div class="container-fluid">
+owner_add_full_facility.php.bkp:            <div class="form-group">
+owner_add_full_facility.php.bkp:		 <div class="col-md-4">
+owner_add_full_facility.php.bkp:                 <!-- form action="Add_new_facility.php" method="get" autocomplete="on" -->
+owner_add_full_facility.php.bkp:		 <div class="col-md-8" style="color:blue;background-color:lightgray;">
+owner_add_full_facility.php.bkp:	  <div id="bbtab-2" style="color:blue;">
+owner_add_full_facility.php.bkp:            <div class="container-fluid">
+owner_add_full_facility.php.bkp:            <div class="form-group">
+owner_add_full_facility.php.bkp:            There are comfortable and affordable shared room as well as semi-private and private rooms for more needed quiet & privacy.</p>
+owner_add_full_facility.php.bkp:            <input type="checkbox" name="semi-private" value="yes"> Semi-Private Room <br>
+owner_add_full_facility.php.bkp:            <input type="checkbox" name="secure-quiet" value="yes"> Secure and quiet neighborhood <br>
+owner_add_full_facility.php.bkp:            <input type="checkbox" name="light-spacious" value="yes"> Light and spacious rooms <br>
+owner_add_full_facility.php.bkp:            <input type="checkbox" name="alarm-access" value="yes"> Fire Alarms & Wheelchair Access <br>
+owner_add_full_facility.php.bkp:	  <div id="bbtab-3" style="color:blue;">
+owner_add_full_facility.php.bkp:            <div class="container-fluid">
+owner_add_full_facility.php.bkp:            <div class="form-group">
+owner_add_full_facility.php.bkp:            Included amenities & services - <br>
+owner_add_full_facility.php.bkp:            <input type="checkbox" name="social-events" value="yes"> Social events (i.e. birthday & holiday parties) <br>
+owner_add_full_facility.php.bkp:            Fee based services - <br>
+owner_add_full_facility.php.bkp:	  <div id="bbtab-4" style="color:blue;">
+owner_add_full_facility.php.bkp:	    <div class="container-fluid">
+owner_add_full_facility.php.bkp:		 <div class="col-md-4">
+owner_add_full_facility.php.bkp:		     <dt>Semi-private:</dt><dd>From<input type="number" name="semi_min" min="1500" max="8000"><br>To__<input type="number" name="semi_max" min="2000" max="10000"></dd>
+owner_add_full_facility.php.bkp:                                                  <input type="number" name="avail_semi" min="0" max="1000">Semi-private<br>
+owner_add_full_facility.php.bkp:         <div class="col-md-8" style="background-color:lightgray;">
+owner_add_full_facility.php.bkp:  <div id="bbtab-5">
+owner_add_full_facility.php.bkp:    <div class="container-fluid">
+owner_add_full_facility.php.bkp:        <div class="col-md-offset-4 col-md-8" style="color:blue;background-color:lightgray;">
+owner_add_full_facility.php.bkp:</div> <!-- tabs end --> 
+owner_add_full_facility.php.bkp:</div> <!-- tabs container end -->
+owner_claim_facility_front_end.php:<!----------------------------------------------------------------->
+owner_claim_facility_front_end.php:<!- FILE: owner_claim_facility_front_end.php                      ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-DESCRIPTION:  This is the front end used to claim the          ->
+owner_claim_facility_front_end.php:<!-              ownership  of a facility by a registered         ->
+owner_claim_facility_front_end.php:<!-              owner. Simply enter a valid license number       ->
+owner_claim_facility_front_end.php:<!-              or a facility number to claim the facility.      ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-WHO      WHEN          WHAT                                    ->
+owner_claim_facility_front_end.php:<!------    -------       -------------------------------------   ->
+owner_claim_facility_front_end.php:<!-         01-22-15      Moved to Linux and made changes         ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!-                                                               ->
+owner_claim_facility_front_end.php:<!----------------------------------------------------------------->
+owner_claim_facility_front_end.php:<?php include( '../common/header.php' );?> <!--worked -->
+owner_claim_facility_front_end.php:					<!-- <p>
+owner_claim_facility_front_end.php:					</p> -->
+owner_claim_facility_front_end.php.bak:<!----------------------------------------------------------------->
+owner_claim_facility_front_end.php.bak:<!- FILE:                                                         ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-DESCRIPTION:                                                   ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-WHO      WHEN          WHAT                                    ->
+owner_claim_facility_front_end.php.bak:<!------    -------       -------------------------------------   ->
+owner_claim_facility_front_end.php.bak:<!-         01-22-15      Moved to Linux and made changes         ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!-                                                               ->
+owner_claim_facility_front_end.php.bak:<!----------------------------------------------------------------->
+owner_claim_facility_front_end.php.bak:<?php include( '../common/header.php' );?> <!--worked -->
+owner_claim_facility_front_end.php.bak:						<label for="email">E-mail address:</label>
+owner_claim_facility.php:# 	     01-07-15      Added logic to store primary owner to rcfe table.
+owner_claim_facility.php:#            01-12-15      Removed UpdateClaim() function.  We no longer carry
+owner_claim_facility.php:#            06-18-15      firstname, lastname and email address inputs are not needed.
+owner_claim_facility.php:#            07-08-15      Added rollback() in case insert transaction doesn't go thru.
+owner_claim_facility.php:	$mysqli->autocommit( FALSE );
+owner_claim_facility.php:	$add_post_res = $mysqli->query($UpdateCommand); # or die($mysqli->error);
+owner_claim_facility.php:        if( $mysqli->commit())
+owner_claim_facility.php:                $mysqli->rollback();
+owner_claim_facility.php://             06-20-15    Added $SsfeAddress as an additional check.
+owner_claim_facility.php:	$objGetResult = $mysqli->query( $QueryResultSet );
+owner_claim_facility.php:	// remember that even if there is no single row has returned, it will return an object which is non-zero.  
+owner_claim_facility.php:		$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+owner_claim_facility.php:		$objGetResult->free_result();
+owner_claim_facility.php:#  INPUT:  $Facility_Index - Unique ID of the facility table.
+owner_claim_facility.php:#          $Owner_Index - Unique ID of the owner table.
+owner_claim_facility.php:#  OUTPUT: SUCCESS  -  a new row has successfully inserted.
+owner_claim_facility.php:#          FAILURE  -  such a row already exists.
+owner_claim_facility.php:#  ----    ------   -------
+owner_claim_facility.php:#          01-07-15  Added timestamp.
+owner_claim_facility.php:	$mysqli->autocommit( FALSE );	
+owner_claim_facility.php:	$add_post_res = $mysqli->query($InsertCommand); #or die($mysqli->error);
+owner_claim_facility.php:        if( $mysqli->commit())
+owner_claim_facility.php:                $mysqli->rollback();
+owner_claim_facility.php:		echo "No Success: $mysqli->error";
+owner_claim_facility.php:	$objGetResult = $mysqli->query( $QueryResultSet );
+owner_claim_facility.php:	if( $objGetResult ) #remember that even if there is no single row has returned, it will return an object which is non-zero.  
+owner_claim_facility.php:		$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+owner_claim_facility.php:		$objGetResult->free_result();
+owner_claim_facility.php:				// Owner index is an auto-increment so it starts with 0.
+owner_claim_facility.php:	// $mysqli->close();
+owner_facility_search.php:# ----     --------  -----------
+owner_facility_search.php:# James    12-31-14  Inserted ConnectDB.php into dependency.php
+owner_facility_search.php:#          01-21-15  Moved to linux from windows env.  Modified require_once directory path.
+owner_facility_search.php:#          01-23-15  Added zipcode as a part of href.
+owner_facility_search.php:#          06-20-15  Added comments.
+owner_facility_search.php:header( 'Cache-Control: no cache' );
+owner_facility_search.php:if( $res = $mysqli->query( $Get_Detailed_info ) )
+owner_facility_search.php:	while( $newArray= $res->fetch_array( MYSQLI_ASSOC ) )
+owner_facility_search.php:	$res->free_result();
+owner_facility_search.php:	//$mysqli->close();
+owner_facility_search.php:<title>4BABOOM.COM - Client Facility Search</title>
+owner_facility_search.php:	<meta charset="utf-8">
+owner_facility_search.php:	<?php include( '../common/header.php' );?> <!--worked -->
+owner_facility_search.php:	<br><br>;  <!-- need it for first lines that gets cut off by the navigation bar. -->
+owner_facility_search.php.bak:# ----     --------  -----------
+owner_facility_search.php.bak:# James    12-31-14  Inserted ConnectDB.php into dependency.php
+owner_facility_search.php.bak:#          01-21-15  Moved to linux from windows env.  Modified require_once directory path.
+owner_facility_search.php.bak:#          01-23-15  Added zipcode as a part of href.
+owner_facility_search.php.bak:header( 'Cache-Control: no cache' );
+owner_facility_search.php.bak:if( $res = $mysqli->query( $Get_Detailed_info ) )
+owner_facility_search.php.bak:	while( $newArray= $res->fetch_array( MYSQLI_ASSOC ) )
+owner_facility_search.php.bak:	$res->free_result();
+owner_facility_search.php.bak:	$mysqli->close();
+owner_facility_search.php.bak:<title>4BABOOM.COM - Client Facility Search</title>
+owner_facility_search.php.bak:	<meta charset="utf-8">
+owner_facility_search.php.bak:	<?php include( '../common/header.php' );?> <!--worked -->
+owner_facility_search.php.bak:	<br><br>;  <!-- need it for first lines that gets cut off by the navigation bar. -->
+owner_list_facilities_owned_for_update.php://             06-22-15      Displayes  basic facility info.
+owner_list_facilities_owned_for_update.php:		$objGetAllFacilityInfo = $mysqli->query( $sGetAllFacilityInfo );
+owner_list_facilities_owned_for_update.php:			$AFacility = $objGetAllFacilityInfo->fetch_array( MYSQLI_ASSOC );
+owner_list_facilities_owned_for_update.php:			$objGetAllFacilityInfo->free_result();
+owner_list_facilities_owned_for_update.php:		$objGetAllOwnership = $mysqli->query( $sGetAllOwnership );
+owner_list_facilities_owned_for_update.php:			while( $AnOwnerArray = $objGetAllOwnership->fetch_array( MYSQLI_ASSOC ) )
+owner_list_facilities_owned_for_update.php:			$objGetAllOwnership->free_result();
+owner_list_facilities_owned_for_update.php:		$objGetAllFacilitiesOwned = $mysqli->query( $sGetAllFacilitiesOwned );
+owner_list_facilities_owned_for_update.php:			while( $AUserIDArray = $objGetAllFacilitiesOwned->fetch_array( MYSQLI_ASSOC ) )
+owner_list_facilities_owned_for_update.php:			$objGetAllFacilitiesOwned->free_result();
+owner_list_facilities_owned_for_update.php:		//$mysqli->close();
+owner_login.php:#--------------------------------
+owner_login.php:#          01-08-15 Copied from Log_in_a_client.php
+owner_login.php:#Irvine    01-10-15 Got rid of 'if( !$_POST )' condition
+owner_login.php:#          01-22-15 Moved to Linux.
+owner_login.php:#          03-15-15 Added salt and hash.
+owner_login.php:#          03-20-15 Implemented CSFR defense.
+owner_login.php:#          06-06-15 Implmented AJAX validation.
+owner_login.php:#          06-11-15 Implemented Password recovery.
+owner_login.php:#          06-11-15 Added code to detect if the email has not yet completed 
+owner_login.php:	$objGetResult = $mysqli->query( $QueryResultSet );
+owner_login.php:	if( $objGetResult ) #remember that even if there is no single row has returned, it will return an object which is non-zero.  
+owner_login.php:		$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+owner_login.php:		$objGetResult->free_result();
+owner_login.php:					echo '<META HTTP-EQUIV="Refresh" Content="0;URL=owner_reset_password_front_end.php">';
+owner_login.php.bak:#--------------------------------
+owner_login.php.bak:#          01-08-15 Copied from Log_in_a_client.php
+owner_login.php.bak:#Irvine    01-10-15 Got rid of 'if( !$_POST )' condition
+owner_login.php.bak:#          01-22-15 Moved to Linux.
+owner_login.php.bak:#          03-15-15 Added salt and hash.
+owner_login.php.bak:#          03-20-15 Implemented CSFR defense.
+owner_login.php.bak:#          06-06-15 Implmented AJAX validation.
+owner_login.php.bak:#          06-11-15 Implemented Password recovery.
+owner_login.php.bak:#          06-11-15 Added code to detect if the email has not yet completed 
+owner_login.php.bak:	$objGetResult = $mysqli->query( $QueryResultSet );
+owner_login.php.bak:	if( $objGetResult ) #remember that even if there is no single row has returned, it will return an object which is non-zero.  
+owner_login.php.bak:		$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+owner_login.php.bak:		$objGetResult->free_result();
+owner_login.php.bak:					echo '<META HTTP-EQUIV="Refresh" Content="0;URL=owner_reset_password_front_end.php">';
+owner_login_register.php:<!---------------------------------------------------------------->
+owner_login_register.php:<!- FILE:                                                         ->
+owner_login_register.php:<!-                                                               ->
+owner_login_register.php:<!-                                                               ->
+owner_login_register.php:<!-                                                               ->
+owner_login_register.php:<!-                                                               ->
+owner_login_register.php:<!-                                                               ->
+owner_login_register.php:<!-                                                               ->
+owner_login_register.php:<!-                                                               ->
+owner_login_register.php:<!-ESCRIPTION:                                                    ->
+owner_login_register.php:<!-WHO      WHEN          WHAT                                    ->
+owner_login_register.php:<!------    -------       -------------------------------------   ->
+owner_login_register.php:<!-         01-22-15      Including 3 files from common dir       >
+owner_login_register.php:<!-                       Added method="post"                     ->
+owner_login_register.php:<!-                                                               ->
+owner_login_register.php:<!-         03-20-15      Implemented CSFR defense.               ->
+owner_login_register.php:<!-         06-10-15      Implemented AJAX.                       ->
+owner_login_register.php:<!---------------------------------------------------------------->
+owner_login_register.php:<html lang="en" ng-app>
+owner_login_register.php:  <meta charset="utf-8">
+owner_login_register.php:  <title>4BABOOM.COM - Owner Login or Register</title>
+owner_login_register.php:                var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+owner_login_register.php:                var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+owner_login_register.php:		var reg = /^[A-Za-z0-9]+$/;
+owner_login_register.php:        //<!----------------------------------------------------------------------------->
+owner_login_register.php:	//<!-- DESCRIPTION: This is AJAX call to  owner_login.php.                     -->
+owner_login_register.php:	//<!--              This AJAX is called from owner_log_in form once all the    -->
+owner_login_register.php:        //<!--              inputs have passed the minimum qualification.              -->
+owner_login_register.php:	//<!--                                                                         -->
+owner_login_register.php:        //<!-- WHO        WHEN        WHAT                                             -->
+owner_login_register.php:	//<!--            06-11-15    Added encodeURIComponent()                       -->
+owner_login_register.php:	//<!--                                                                         -->
+owner_login_register.php:        //<!----------------------------------------------------------------------------->
+owner_login_register.php:                        //<!--This is where the returned string gets received -->
+owner_login_register.php:                        //<!--from the php backend and sets the value in the  -->
+owner_login_register.php:                        //<!-- placeholder in the html.                       -->
+owner_login_register.php:                        //<!--Not sure what these state and status mean.      -->
+owner_login_register.php:                 //<!--Send the request to the backend php script.  -->
+owner_login_register.php:		 //<!-- "+ &" and other characters get lost when the data is sent to the PHP file.  -->
+owner_login_register.php:		 //<!-- In order to preserve these characters, the following command is a must.     -->
+owner_login_register.php:		 //<!-- "+" character will be preserved to "%2B".  Once the data is arrived in PHP  -->
+owner_login_register.php:                 //<!-- it gets translated back to "+" character.                                   -->
+owner_login_register.php:                 str = email + "|" + pass1 + "|" + clean_token;    //<!-- 03-15-15 pass token -->
+owner_login_register.php:                          //<!--This is where the returned string gets received -->
+owner_login_register.php:                          //<!--from the php backend and sets the value in the  -->
+owner_login_register.php:                          //<!-- placeholder in the html.                       -->
+owner_login_register.php:                          //<!--Not sure what these state and status mean.      -->
+owner_login_register.php:                  <!--Send the request to the backend php script.  -->
+owner_login_register.php:<!-- Owner Login or Register Start -->
+owner_login_register.php:<!-- Login Form -->
+owner_login_register.php:  <h3><span class="glyphicon glyphicon-heart"></span> FACILITY OWNER -</h3>
+owner_login_register.php:  <p>- Must register for the first time in order to manage/update your facilities. Skip the login and go directly to the register below.</p> 
+owner_login_register.php:  <p>- After successful registration then you can search for facilities to take ownership or add your new facilities.</p>
+owner_login_register.php:  <p>- After successful login then your owned facilities will be presented and ready for you to add/update.</p>
+owner_login_register.php:<h4><span class="glyphicon glyphicon-log-in"></span><b> REGISTERED OWNER - </b>Please go ahead and login ...<h4>
+owner_login_register.php:<form ng-submit='registerUser()' name="owner_login_form" id="owner_login_form"  method="post" class="form-horizontal" onsubmit="validate_login()" novalidate>
+owner_login_register.php:<!--<form ng-submit='registerUser()' name="owner_login_form" id="owner_login_form"  method="post" class="form-horizontal" onclick="validate_login()" novalidate>-->
+owner_login_register.php:  <div class="form-group">
+owner_login_register.php:    <label for="owner-id" class="col-sm-2 control-label">Login:</label>
+owner_login_register.php:    <div class="col-sm-4">
+owner_login_register.php:      <input type="email" ng-model="user.email" class="form-control" id="owner_email" name="owner_email" onblur="validateLoginEmail(this);" placeholder="email@abc.com" required>
+owner_login_register.php:    <label for="owner-password" class="col-sm-2 control-label">Password:</label>
+owner_login_register.php:    <div class="col-sm-4">
+owner_login_register.php:      <input type="password" ng-model="user.password" class="form-control" id="owner_password" name="owner_password" placeholder="password" ng-minlength="6" required>
+owner_login_register.php:                class="help-block"
+owner_login_register.php:                ng-show="owner_login_form.owner_password.$error.minlength || owner_login_form.owner_password.$invalid" >  <!--This text will be displayed only if password is invalid or password length is less than 6.   $invalid is a variable name and so it $error. -->
+owner_login_register.php:	<a href="http://54.67.1.138/owner/owner_recover_password_front_end.php" class="forgot-pwd" tabindex="4">Forgot your password?</a>
+owner_login_register.php:      <input type="hidden" name="token" id="owner_token" value="<?php echo Token::generate( "OWNER_LOGIN_FORM" ); ?>" > <!-- CSFR defense -->
+owner_login_register.php:  <div class="form-group">
+owner_login_register.php:    <div class="col-sm-offset-2 col-sm-10">
+owner_login_register.php:      <button ng-disabled="owner_login_form.$invalid" type="submit" class="btn btn-primary">Login</button>
+owner_login_register.php:<h4><span class="glyphicon glyphicon-registration-mark"></span><b> FIRST TIME OWNER - </b>Please follow the owner registration below ...<h4>
+owner_login_register.php:  <form ng-submit='registerUer()' name="owner_register_form" class="form-horizontal" method="post" onsubmit="validate_registration()" novalidate>
+owner_login_register.php:    <div class="form-group">
+owner_login_register.php:      <label for="owner-email" class="col-sm-2 control-label">Enter Email:</label>
+owner_login_register.php:      <div class="col-sm-4">
+owner_login_register.php:        <input ng-model="newUser.email" type="email" class="form-control" id="owner_register_email" name="owner_register_email" placeholder="email@abc.com" onblur="validateRegisterEmail(this);" required>
+owner_login_register.php:      <label for="owner-pwd" class="col-sm-3 control-label">New Password:</label>
+owner_login_register.php:      <div class="col-sm-3">
+owner_login_register.php:       <input ng-model="newUser.password" type="password" class="form-control" id="owner_pwd" name="owner_pwd" placeholder="password" onblur="validatePassword(this);" ng-minlength="6" required>
+owner_login_register.php:                class="help-block"
+owner_login_register.php:                ng-show="owner_register_form.owner_pwd.$error.minlength || owner_register_form.owner_pwd.$invalid" >  <!--This text will be displayed only if password is invalid or password length is less than 6.   $invalid is a variable name and so it $error. -->
+owner_login_register.php:      <label for="owner-confirm-pwd" class="col-sm-offset-6 col-sm-3 control-label">Confirm New Password:</label>
+owner_login_register.php:      <div class="col-sm-3">
+owner_login_register.php:        <input ng-model="user_confirm.password" type="password" class="form-control" id="confirm_owner_pwd" name="confirm_owner_pwd" placeholder="confirm new password" onblur="validateConfirmPassword(this);" ng-minlength="6" required>
+owner_login_register.php:    <div class="form-group">
+owner_login_register.php:      <label for="owner-first" class="col-sm-2 control-label">First:</label>
+owner_login_register.php:      <div class="col-sm-4">
+owner_login_register.php:        <input ng-model="user.text" type="text" class="form-control" id="owner_first_name" name="owner_first_name" placeholder="first" ng-minlength="2" required>
+owner_login_register.php:                        class="help-block"
+owner_login_register.php:                        ng-show="owner_register_form.owner_first_name.$error.minlength || owner_register_form.owner_first_name.$invalid" >  <!--This text will be displayed only if password is invalid or password length is less than 6.   $invalid is a variable name and so it $error. -->
+owner_login_register.php:      <label for="owner-last" class="col-sm-2 control-label">Last:</label>
+owner_login_register.php:      <div class="col-sm-4">
+owner_login_register.php:        <input ng-model="user1.text" type="text" class="form-control" id="owner_last_name" name="owner_last_name" placeholder="last" ng-minlength=2" required>
+owner_login_register.php:                        class="help-block"
+owner_login_register.php:                        ng-show="owner_register_form.owner_last_name.$error.minlength || owner_register_form.owner_last_name.$invalid" >  <!--This text will be displayed only if password is invalid or password length is less than 6.   $invalid is a variable name and so it $error. -->
+owner_login_register.php:      <input type="hidden" name="owner_register_token" id="owner_register_token" value="<?php echo Token::generate( "OWNER_REGISTER_FORM" ); ?>" > <!-- CSFR defense -->
+owner_login_register.php:    <div class="form-group">
+owner_login_register.php:      <div class="col-sm-offset-2 col-sm-10">
+owner_login_register.php:                <input type="checkbox" ng-model="newUser.terms" value="1" required>
+owner_login_register.php:        <button ng-disabled="owner_register_form.$invalid" type="submit" class="btn btn-primary">Register</button>
+owner_login_register.php:<!-- Owner Login or Register End -->
+owner_login_register.php.bak:#  -----    -------       -------------------------------------   # 
+owner_login_register.php.bak:#           01-22-15      Including 3 files from common dir       #
+owner_login_register.php.bak:#           03-20-15      Implemented CSFR defense.               # 
+owner_login_register.php.bak:  <title>4BABOOM.COM - Owner Login or Register</title>
+owner_login_register.php.bak:  <meta charset="utf-8>
+owner_login_register.php.bak:<!-- Owner Login or Register Start -->
+owner_login_register.php.bak:<!-- Login Form -->
+owner_login_register.php.bak:  <h3><span class="glyphicon glyphicon-heart"></span> FACILITY OWNER -</h3>
+owner_login_register.php.bak:  <p>- Must register for the first time in order to manage/update your facilities. Skip the login and go directly to the register below.</p> 
+owner_login_register.php.bak:  <p>- After successful registration then you can search for facilities to take ownership or add your new facilities.</p>
+owner_login_register.php.bak:  <p>- After successful login then your owned facilities will be presented and ready for you to add/update.</p>
+owner_login_register.php.bak:<h4><span class="glyphicon glyphicon-log-in"></span><b> REGISTERED OWNER - </b>Please go ahead and login ...<h4>
+owner_login_register.php.bak:<form class="form-horizontal" method="post" action="owner_log_in.php">
+owner_login_register.php.bak:  <div class="form-group">
+owner_login_register.php.bak:    <label for="owner-id" class="col-sm-2 control-label">Login:</label>
+owner_login_register.php.bak:    <div class="col-sm-4">
+owner_login_register.php.bak:      <input type="email" class="form-control" id="owner-id" name="owner_email" placeholder="email@abc.com">
+owner_login_register.php.bak:    <label for="owner-password" class="col-sm-2 control-label">Password:</label>
+owner_login_register.php.bak:    <div class="col-sm-4">
+owner_login_register.php.bak:      <input type="password" class="form-control" id="owner-password" name="owner_password" placeholder="password">
+owner_login_register.php.bak:      <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" > <!-- CSFR defense -->
+owner_login_register.php.bak:  <div class="form-group">
+owner_login_register.php.bak:    <div class="col-sm-offset-2 col-sm-10">
+owner_login_register.php.bak:      <button type="submit" class="btn btn-primary">Login</button>
+owner_login_register.php.bak:<h4><span class="glyphicon glyphicon-registration-mark"></span><b> FIRST TIME OWNER - </b>Please follow the owner registration below ...<h4>
+owner_login_register.php.bak:  <form class="form-horizontal" method="post" action="owner_register.php">
+owner_login_register.php.bak:    <div class="form-group">
+owner_login_register.php.bak:      <label for="owner-email" class="col-sm-2 control-label">Enter Email:</label>
+owner_login_register.php.bak:      <div class="col-sm-4">
+owner_login_register.php.bak:        <input type="email" class="form-control" id="owner-email" name="owner_email" placeholder="email@abc.com">
+owner_login_register.php.bak:      <label for="owner-pwd" class="col-sm-3 control-label">New Password:</label>
+owner_login_register.php.bak:      <div class="col-sm-3">
+owner_login_register.php.bak:        <input type="password" class="form-control" id="owner-pwd" name="owner_pwd" placeholder="password">
+owner_login_register.php.bak:      <label for="owner-confirm-pwd" class="col-sm-offset-6 col-sm-3 control-label">Confirm New Password:</label>
+owner_login_register.php.bak:      <div class="col-sm-3">
+owner_login_register.php.bak:        <input type="password" class="form-control" id="confirm-owner-pwd" name="confirm_owner_pwd" placeholder="confirm new password">
+owner_login_register.php.bak:    <div class="form-group">
+owner_login_register.php.bak:      <label for="owner-first" class="col-sm-2 control-label">First:</label>
+owner_login_register.php.bak:      <div class="col-sm-4">
+owner_login_register.php.bak:        <input type="text" class="form-control" id="owner-first" name="owner_first_name" placeholder="first">
+owner_login_register.php.bak:      <label for="owner-last" class="col-sm-2 control-label">Last:</label>
+owner_login_register.php.bak:      <div class="col-sm-4">
+owner_login_register.php.bak:        <input type="text" class="form-control" id="owner-last" name="owner_last_name" placeholder="last">
+owner_login_register.php.bak:    <div class="form-group">
+owner_login_register.php.bak:      <div class="col-sm-offset-2 col-sm-10">
+owner_login_register.php.bak:        <button type="submit" class="btn btn-primary">Register</button>
+owner_login_register.php.bak:<!-- Owner Login or Register End -->
+owner_logout.php:/*------    -------       -------------------------------------   */
+owner_logout.php:/*          02-04-15      Created.                                */
+owner_recover_password_front_end.php:<!---------------------------------------------------------------->
+owner_recover_password_front_end.php:<!- FILE: owner_recover_password_front_end.php                    ->
+owner_recover_password_front_end.php:<!-                                                               ->
+owner_recover_password_front_end.php:<!- DESCRIPTION: THis page is displayed when an owner pushes      ->
+owner_recover_password_front_end.php:<!-              "Forgot Password" in the owner login/registration->
+owner_recover_password_front_end.php:<!-              page.                                            ->
+owner_recover_password_front_end.php:<!-                                                               ->
+owner_recover_password_front_end.php:<!-                                                               ->
+owner_recover_password_front_end.php:<!-                                                               ->
+owner_recover_password_front_end.php:<!-WHO      WHEN          WHAT                                    ->
+owner_recover_password_front_end.php:<!------    -------       -------------------------------------   ->
+owner_recover_password_front_end.php:<!-         06-10-15      Copied and modified from owner_login_   ->
+owner_recover_password_front_end.php:<!-                       register.php.                           ->
+owner_recover_password_front_end.php:<!-                                                               ->
+owner_recover_password_front_end.php:<!---------------------------------------------------------------->
+owner_recover_password_front_end.php:<html lang="en" ng-app>
+owner_recover_password_front_end.php:  <meta charset="utf-8">
+owner_recover_password_front_end.php:  <title>4BABOOM.COM - Owner Login or Register</title>
+owner_recover_password_front_end.php:                var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+owner_recover_password_front_end.php:                        <!--This is where the returned string gets received -->
+owner_recover_password_front_end.php:                        <!--from the php backend and sets the value in the  -->
+owner_recover_password_front_end.php:                        <!-- placeholder in the html.                       -->
+owner_recover_password_front_end.php:                        <!--Not sure what these state and status mean.      -->
+owner_recover_password_front_end.php:                 <!--Send the request to the backend php script.  -->
+owner_recover_password_front_end.php:                 str = email + "|" + clean_token;    <!-- 03-15-15 pass token -->
+owner_recover_password_front_end.php:<!-- Owner Login or Register Start -->
+owner_recover_password_front_end.php:<!-- Login Form -->
+owner_recover_password_front_end.php:  <h3><span class="glyphicon glyphicon-heart"></span> Lets recover your password. -</h3>
+owner_recover_password_front_end.php:<h4><span class="glyphicon glyphicon-log-in"></span><b> REGISTERED OWNER - </b>Please enter your e-mail ...<h4>
+owner_recover_password_front_end.php:<form ng-submit='registerUser()' name="owner_recover_pw_form" id="owner_recover_pw_form"  method="post" class="form-horizontal" onsubmit="recover_password()" novalidate>
+owner_recover_password_front_end.php:  <div class="form-group">
+owner_recover_password_front_end.php:    <label for="owner-id" class="col-sm-2 control-label">E-Mail:</label>
+owner_recover_password_front_end.php:    <div class="col-sm-4">
+owner_recover_password_front_end.php:      <input type="email" ng-model="user.email" class="form-control" id="owner_email" name="owner_email" onblur="validateLoginEmail(this);" placeholder="email@abc.com" required>
+owner_recover_password_front_end.php:      <input type="hidden" name="token" id="owner_token" value="<?php echo Token::generate( "OWNER_RECOVER_PW_FORM" ); ?>" > <!-- CSFR defense -->
+owner_recover_password_front_end.php:  <div class="form-group"> 
+owner_recover_password_front_end.php:    <div class="col-sm-offset-2 col-sm-10">
+owner_recover_password_front_end.php:      <button ng-disabled="owner_recover_pw_form.$invalid" type="submit" class="btn btn-primary">Submit</button>
+owner_recover_password_front_end.php:<!-- Owner Login or Register End -->
+owner_recover_password.php:#            06-12-15    Created.
+owner_recover_password.php:#            06-16-15    Implemented CSFR.
+owner_recover_password.php:	$objGetResult = $mysqli->query( $QueryResultSet );
+owner_recover_password.php:	if( $objGetResult ) #remember that even if there is no single row has returned, it will return an object which is non-zero.  
+owner_recover_password.php:		$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+owner_recover_password.php:		$objGetResult->free_result();
+owner_recover_password.php:			$mysqli->autocommit( FALSE );
+owner_recover_password.php:			if( !$mysqli->query( $UpdateSQL) )
+owner_recover_password.php:				echo "CALL failed: (" . $mysqli->errno . ") " . $mysqli->error;
+owner_recover_password.php:		        if( $mysqli->commit())
+owner_recover_password.php:                		$mysqli->rollback();
+owner_register.php:#--------------------------------
+owner_register.php:#          01-08-15 Sets global session variable for user = owner.
+owner_register.php:#          01-22-15 Moved to Linux and changed accordingly.
+owner_register.php:#          03-15-15 Added salt and hash.
+owner_register.php:#          06-10-15 Added AJAX code.
+owner_register.php:#          06-16-15 Implemented CSFR.
+owner_register.php:	$objGetResult = $mysqli->query( $QueryResultSet );
+owner_register.php:	if( $objGetResult ) #remember that even if there is no single row has returned, it will return an object which is non-zero.  
+owner_register.php:		$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+owner_register.php:		$objGetResult->free_result();
+owner_register.php://            06-11-15    Added email_code.
+owner_register.php://            06-16-15    Added email activation.
+owner_register.php:		$mysqli->autocommit( FALSE );
+owner_register.php:		$add_post_res = $mysqli->query($InsertCommand) or die($mysqli->error);
+owner_register.php:	        if( $mysqli->commit())
+owner_register.php:                	$mysqli->rollback();
+owner_register.php.bak:#--------------------------------
+owner_register.php.bak:#          01-08-15 Sets global session variable for user = owner.
+owner_register.php.bak:#          01-22-15 Moved to Linux and changed accordingly.
+owner_register.php.bak:#          03-15-15 Added salt and hash.
+owner_register.php.bak:	$objGetResult = $mysqli->query( $QueryResultSet );
+owner_register.php.bak:	if( $objGetResult ) #remember that even if there is no single row has returned, it will return an object which is non-zero.  
+owner_register.php.bak:		$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+owner_register.php.bak:		$objGetResult->free_result();
+owner_register.php.bak:		$add_post_res = $mysqli->query($InsertCommand) or die($mysqli->error);
+owner_reset_password_front_end.php:<!---------------------------------------------------------------->
+owner_reset_password_front_end.php:<!- FILE: owner_reset_password_front_end.php                      ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!- DESCRIPTION: THis page is for resetting the password.         ->
+owner_reset_password_front_end.php:<!-              This is useful when a user forgets the password. ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!-WHO      WHEN          WHAT                                    ->
+owner_reset_password_front_end.php:<!------    -------       -------------------------------------   ->
+owner_reset_password_front_end.php:<!-         06-10-15      Copied and modified from owner_login_   ->
+owner_reset_password_front_end.php:<!-                       register.php.                           ->
+owner_reset_password_front_end.php:<!-         06-15-15      Cannot disable the form button when     ->
+owner_reset_password_front_end.php:<!-                       the passwords don't match.              ->
+owner_reset_password_front_end.php:<!-                       Need more knowledge on angular form.    ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!-                                                               ->
+owner_reset_password_front_end.php:<!---------------------------------------------------------------->
+owner_reset_password_front_end.php:<html lang="en" ng-app>
+owner_reset_password_front_end.php:  <meta charset="utf-8">
+owner_reset_password_front_end.php:  <title>4BABOOM.COM - Owner Login or Register</title>
+owner_reset_password_front_end.php:                        <!--This is where the returned string gets received -->
+owner_reset_password_front_end.php:                        <!--from the php backend and sets the value in the  -->
+owner_reset_password_front_end.php:                        <!-- placeholder in the html.                       -->
+owner_reset_password_front_end.php:                        <!--Not sure what these state and status mean.      -->
+owner_reset_password_front_end.php:                 <!--Send the request to the backend php script.  -->
+owner_reset_password_front_end.php:		var reg = /^[A-Za-z0-9]+$/;
+owner_reset_password_front_end.php:<!-- Owner Login or Register Start -->
+owner_reset_password_front_end.php:<!-- Login Form -->
+owner_reset_password_front_end.php:	<h3><span class="glyphicon glyphicon-heart"></span><b>Lets reset your password.-</b></h3>
+owner_reset_password_front_end.php:	<h4><span class="glyphicon glyphicon-log-in"></span><b> </b>REGISTERED OWNER,  Please fill in the following ...<h4>
+owner_reset_password_front_end.php:	<form ng-submit='registerUser()' name="owner_reset_password_form" class="form-horizontal" method="post" onsubmit="owner_reset_password()" novalidate>
+owner_reset_password_front_end.php:  		<div class="form-group">
+owner_reset_password_front_end.php:    			<label for="temp_password" class="col-sm-2 control-label">temp password:</label>
+owner_reset_password_front_end.php:    			<div class="col-sm-3">
+owner_reset_password_front_end.php:      				<input ng-model="user.password" type="password" class="form-control" id="temp_password" name="temp_password" placeholder="password" ng-minlength="6" required>
+owner_reset_password_front_end.php:						class="help-block"
+owner_reset_password_front_end.php:						ng-show="owner_reset_password_form.temp_password.$error.minlength || owner_reset_password_form.temp_password.$invalid">
+owner_reset_password_front_end.php:    			<h4><label for="new_password1" class="col-sm-2 control-label">new password:</label><h4>
+owner_reset_password_front_end.php:			<div class="col-sm-3">
+owner_reset_password_front_end.php:      				<input ng-model="user.password2" type="password" class="form-control" id="new_password1" name="new_password1" onblur="validatePassword(this);" placeholder="password" ng-minlength="6" required>
+owner_reset_password_front_end.php:						class="help-block"
+owner_reset_password_front_end.php:						ng-show="owner_reset_password_form.new_password1.$error.minlength || owner_reset_password_form.new_password1.$invalid">
+owner_reset_password_front_end.php:			<label for="new_password2" class="col-sm-2 control-label">confirm password:</label>
+owner_reset_password_front_end.php:    			<div class="col-sm-3">
+owner_reset_password_front_end.php:				<input ng-model="userpassword" type="password" class="form-control" id="new_password2" name="new_password2" placeholder="password" onblur="validateResetPassword(this);" ng-minlength="6" required>
+owner_reset_password_front_end.php:  		<div class="form-group">
+owner_reset_password_front_end.php:			<!--The button is disabled when 2 passwords do not match.-->
+owner_reset_password_front_end.php:  			<div class="col-sm-offset-2 col-sm-10">
+owner_reset_password_front_end.php:                                <!-- June 15, 2014                                        -->
+owner_reset_password_front_end.php:				<!-- The second or statement has no impact to ng-disabled -->
+owner_reset_password_front_end.php:    				<button ng-disabled="owner_reset_password_form.$invalid || owner_reset_password_form.new_password2.$invalid " type="submit" class="btn btn-primary">Login</button>
+owner_reset_password_front_end.php:<!-- Owner Login or Register End -->
+owner_reset_password_front_end.php.bak:<!---------------------------------------------------------------->
+owner_reset_password_front_end.php.bak:<!- FILE: owner_reset_password_front_end.php                      ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!- DESCRIPTION: THis page is for resetting the password.         ->
+owner_reset_password_front_end.php.bak:<!-              This is useful when a user forgets the password. ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!-WHO      WHEN          WHAT                                    ->
+owner_reset_password_front_end.php.bak:<!------    -------       -------------------------------------   ->
+owner_reset_password_front_end.php.bak:<!-         06-10-15      Copied and modified from owner_login_   ->
+owner_reset_password_front_end.php.bak:<!-                       register.php.                           ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!-                                                               ->
+owner_reset_password_front_end.php.bak:<!---------------------------------------------------------------->
+owner_reset_password_front_end.php.bak:<html lang="en" ng-app>
+owner_reset_password_front_end.php.bak:  <meta charset="utf-8">
+owner_reset_password_front_end.php.bak:  <title>4BABOOM.COM - Owner Login or Register</title>
+owner_reset_password_front_end.php.bak:                        <!--This is where the returned string gets received -->
+owner_reset_password_front_end.php.bak:                        <!--from the php backend and sets the value in the  -->
+owner_reset_password_front_end.php.bak:                        <!-- placeholder in the html.                       -->
+owner_reset_password_front_end.php.bak:                        <!--Not sure what these state and status mean.      -->
+owner_reset_password_front_end.php.bak:                 <!--Send the request to the backend php script.  -->
+owner_reset_password_front_end.php.bak:                 str = email + "|" + clean_token;    <!-- 03-15-15 pass token -->
+owner_reset_password_front_end.php.bak:<!-- Owner Login or Register Start -->
+owner_reset_password_front_end.php.bak:<!-- Login Form -->
+owner_reset_password_front_end.php.bak:  <h3><span class="glyphicon glyphicon-heart"></span>Lets reset your password.-</h3>
+owner_reset_password_front_end.php.bak:<!--<h4><span class="glyphicon glyphicon-log-in"></span><b> </b>Please fill in the email...<h4> -->
+owner_reset_password_front_end.php.bak:<form method="post" class="form-horizontal" action="owner_reset_password.php">
+owner_reset_password_front_end.php.bak:  <div class="form-group">
+owner_reset_password_front_end.php.bak:    <h4><label for="old_password" class="col-sm-2 control-label">temporary password:</label><h4>
+owner_reset_password_front_end.php.bak:    <div class="col-sm-4">
+owner_reset_password_front_end.php.bak:      <input type="password" class="form-control" id="old_password" name="old_password" placeholder="password">
+owner_reset_password_front_end.php.bak:	<h4><label for="new_password1" class="col-sm-2 control-label">new password:</label><h4>
+owner_reset_password_front_end.php.bak:    <div class="col-sm-4">
+owner_reset_password_front_end.php.bak:      <input type="password" class="form-control" id="new_password1" name="new_password1" placeholder="password">
+owner_reset_password_front_end.php.bak:	<h4><label for="new_password2" class="col-sm-2 control-label">confirm password:</label><h4>
+owner_reset_password_front_end.php.bak:    <div class="col-sm-4">
+owner_reset_password_front_end.php.bak:      <input type="password" class="form-control" id="new_password2" name="new_password2" placeholder="password">
+owner_reset_password_front_end.php.bak:  <div class="form-group">
+owner_reset_password_front_end.php.bak:  <div class="col-sm-offset-2 col-sm-10">
+owner_reset_password_front_end.php.bak:    <button ng-disabled="" type="submit" class="btn btn-primary">Login</button>
+owner_reset_password_front_end.php.bak:<!-- Owner Login or Register End -->
+owner_reset_password.php://               06-16-15        Created.
+owner_reset_password.php:				$objGetResult = $mysqli->query( $QueryResultSet );
+owner_reset_password.php:				#remember that even if there is no single row has returned, it will return an object which is non-zero.  
+owner_reset_password.php:					$anArray = $objGetResult->fetch_array( MYSQLI_ASSOC );
+owner_reset_password.php:							$mysqli->autocommit( FALSE );
+owner_reset_password.php:							if( !$mysqli->query( $UpdateSQL) )
+owner_reset_password.php:									echo "CALL failed: (" . $mysqli->errno . ") " . $mysqli->error;
+owner_reset_password.php:						        if( $mysqli->commit())
+owner_reset_password.php:                						$mysqli->rollback();
+owner_reset_password.php:					$objGetResult->free_result();
+owner_search_front_end.php:<!----------------------------------------------------------------->
+owner_search_front_end.php:<!- FILE:  owner_search.php                                      ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-DESCRIPTION:                                                   ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-WHO      WHEN          WHAT                                    ->
+owner_search_front_end.php:<!------    -------       -------------------------------------   ->
+owner_search_front_end.php:<!-         01-20-15      Moved to Linux.                         ->
+owner_search_front_end.php:<!-                       Added Ajax.                             ->
+owner_search_front_end.php:<!-         01-22-15      Added member_trailer                    ->
+owner_search_front_end.php:<!-         06-29-15      Changed to owner_trailer                ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!-                                                               ->
+owner_search_front_end.php:<!----------------------------------------------------------------->
+owner_search_front_end.php:  <title>4BABOOM.COM - Member Facility Search</title>
+owner_search_front_end.php:  <meta charset="utf-8">
+owner_search_front_end.php:  <meta name="viewport" content="width=device-width, initial-scale=1">
+owner_search_front_end.php:	<!-- This is an implementation of AJAX.  It is called by onkeyup event which is-->
+owner_search_front_end.php:	<!-- set up in when a user inputs city name.                                   -->
+owner_search_front_end.php:	     <!-- Question: How is it possible when no character -->
+owner_search_front_end.php:	 	<!-- has entered, this script is called?            -->
+owner_search_front_end.php:		     		<!--This is where the returned string gets received -->
+owner_search_front_end.php:				 <!--from the php backend and sets the value in the  -->
+owner_search_front_end.php:				 <!-- placeholder in the html.                       -->
+owner_search_front_end.php:			 	<!--Not sure what these state and status mean.      -->
+owner_search_front_end.php:			 <!--Send the request to the backend php script.  -->
+owner_search_front_end.php:  <h3><span class="glyphicon glyphicon-search"> SEARCH OPTIONS -</h3>
+owner_search_front_end.php:  <p>- Search by City - Leave Zipcode blank then enter City as "Irvine" or Cities with comma as "Irvine, Tustin ..."</p> 
+owner_search_front_end.php:  <p>- Or search by Zipcode - Leave City/Cities blank then enter the 5 digits zipcode as "92618".</p>
+owner_search_front_end.php:  <p>- Search by City and Zipcode then enter them both.</p>
+owner_search_front_end.php:<form class="form-horizontal" method="post" action="owner_facility_search.php">
+owner_search_front_end.php:  <div class="form-group">
+owner_search_front_end.php:    <label for="cities" class="col-sm-2 control-label">City/Cities:</label>
+owner_search_front_end.php:    <div class="col-sm-10">
+owner_search_front_end.php:      <input type="text" class="form-control" id="cities" name="cities" onkeyup="showHint(this.value)" placeholder="Irvine or Irvine, Tustin">
+owner_search_front_end.php:  <div class="form-group">
+owner_search_front_end.php:    <label for="zipcode" class="col-sm-2 control-label">and/or Zipcode:</label>
+owner_search_front_end.php:    <div class="col-sm-10">
+owner_search_front_end.php:      <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Zipcode - Only required 5 digits">
+owner_search_front_end.php:  <div class="form-group">
+owner_search_front_end.php:    <div class="col-sm-offset-2 col-sm-10">
+owner_search_front_end.php:      <button type="submit" class="btn btn-primary">Search</button>
+owner_search_front_end.php:<!-- Facility Search Page End -->
+owner_search.php.bak:<!----------------------------------------------------------------->
+owner_search.php.bak:<!- FILE:  owner_search.php                                      ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-DESCRIPTION:                                                   ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-WHO      WHEN          WHAT                                    ->
+owner_search.php.bak:<!------    -------       -------------------------------------   ->
+owner_search.php.bak:<!-         01-20-15      Moved to Linux.                         ->
+owner_search.php.bak:<!-                       Added Ajax.                             ->
+owner_search.php.bak:<!-         01-22-15      Added member_trailer                    ->
+owner_search.php.bak:<!-         06-29-15      Changed to owner_trailer                ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!-                                                               ->
+owner_search.php.bak:<!----------------------------------------------------------------->
+owner_search.php.bak:  <title>4BABOOM.COM - Member Facility Search</title>
+owner_search.php.bak:  <meta charset="utf-8">
+owner_search.php.bak:  <meta name="viewport" content="width=device-width, initial-scale=1">
+owner_search.php.bak:	<!-- This is an implementation of AJAX.  It is called by onkeyup event which is-->
+owner_search.php.bak:	<!-- set up in when a user inputs city name.                                   -->
+owner_search.php.bak:	     <!-- Question: How is it possible when no character -->
+owner_search.php.bak:	 	<!-- has entered, this script is called?            -->
+owner_search.php.bak:		     		<!--This is where the returned string gets received -->
+owner_search.php.bak:				 <!--from the php backend and sets the value in the  -->
+owner_search.php.bak:				 <!-- placeholder in the html.                       -->
+owner_search.php.bak:			 	<!--Not sure what these state and status mean.      -->
+owner_search.php.bak:			 <!--Send the request to the backend php script.  -->
+owner_search.php.bak:      background-image: url("/img/sample1.jpg");
+owner_search.php.bak:<!-- Page Header -->
+owner_search.php.bak:  <div class="col-sm-12" style="background-color:navy">
+owner_search.php.bak:    <h6><img src="/img/4baboom-logo.jpg" alt="4BABOOM LOGO" class="img-rounded" style="width:75px;height:75px"></h6>
+owner_search.php.bak:    <h3 style="text-shadow:5px 5px 5px #FF00FF"><a href="/index_4baboom.php"> Senior For Senior Online Community </a></h3>
+owner_search.php.bak:<!-- Navigation Bar Flag via usertype based on $_SESSION user variables -->
+owner_search.php.bak:<!-- Header - Navigation Bar -->
+owner_search.php.bak:<nav class="navbar navbar-inverse" style="background-color:#191970">
+owner_search.php.bak:  <div class="container-fluid">
+owner_search.php.bak:    <!-- Logo and toggle get grouped for better mobile display -->
+owner_search.php.bak:    <div class="navbar-header">
+owner_search.php.bak:      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-4baboom-navbar-collapse-1">
+owner_search.php.bak:        <span class="sr-only">Toggle navigation</span>
+owner_search.php.bak:        <span class="icon-bar"></span>
+owner_search.php.bak:        <span class="icon-bar"></span>
+owner_search.php.bak:        <span class="icon-bar"></span>
+owner_search.php.bak:      <a class="navbar-brand" href="#">4BABOOM.COM - MEMBER</a>
+owner_search.php.bak:    <!-- Collect the nav links, forms, and other content for toggling -->
+owner_search.php.bak:    <div class="collapse navbar-collapse" id="bs-4baboom-navbar-collapse-1">
+owner_search.php.bak:      <ul class="nav navbar-nav">
+owner_search.php.bak:        <li><a href="/index_4baboom.php">Home <span class="sr-only">(current)</span></a></li>
+owner_search.php.bak:          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Member <span class="caret"></span></a>
+owner_search.php.bak:          <ul class="dropdown-menu" role="menu">
+owner_search.php.bak:            <li id="member-login"><a href="#">Register or Login</a></li>
+owner_search.php.bak:            <li id="member-profile"><a href="#">Update Profile</a></li>
+owner_search.php.bak:      <ul class="nav navbar-nav navbar-right">
+owner_search.php.bak:          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Facility Owner <span class="caret"></span></a>
+owner_search.php.bak:          <ul class="dropdown-menu" role="menu">
+owner_search.php.bak:    </div><!-- /.navbar-collapse -->
+owner_search.php.bak:  </div><!-- /.container-fluid -->
+owner_search.php.bak:<!-- Facility Search Page Start -->
+owner_search.php.bak:<!-- Search Form -->
+owner_search.php.bak:  <h3><span class="glyphicon glyphicon-search"> SEARCH OPTIONS -</h3>
+owner_search.php.bak:  <p>- Search by City - Leave Zipcode blank then enter City as "Irvine" or Cities with comma as "Irvine, Tustin ..."</p> 
+owner_search.php.bak:  <p>- Or search by Zipcode - Leave City/Cities blank then enter the 5 digits zipcode as "92618".</p>
+owner_search.php.bak:  <p>- Search by City and Zipcode then enter them both.</p>
+owner_search.php.bak:<form class="form-horizontal" method="post" action="owner_facility_search.php">
+owner_search.php.bak:  <div class="form-group">
+owner_search.php.bak:    <label for="cities" class="col-sm-2 control-label">City/Cities:</label>
+owner_search.php.bak:    <div class="col-sm-10">
+owner_search.php.bak:      <input type="text" class="form-control" id="cities" name="cities" onkeyup="showHint(this.value)" placeholder="Irvine or Irvine, Tustin">
+owner_search.php.bak:  <div class="form-group">
+owner_search.php.bak:    <label for="zipcode" class="col-sm-2 control-label">and/or Zipcode:</label>
+owner_search.php.bak:    <div class="col-sm-10">
+owner_search.php.bak:      <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Zipcode - Only required 5 digits">
+owner_search.php.bak:  <div class="form-group">
+owner_search.php.bak:    <div class="col-sm-offset-2 col-sm-10">
+owner_search.php.bak:      <button type="submit" class="btn btn-primary">Search</button>
+owner_search.php.bak:<!-- Facility Search Page End -->
+owner_update_facility_front_end.php:#   ------     ---------    ----------
+owner_update_facility_front_end.php:#   Bac        06-11-15     Created.
+owner_update_facility_front_end.php:#   James      06-21-15     Filled in text inputs from database.
+owner_update_facility_front_end.php:$objGetAllFacilityInfo = $mysqli->query( $sGetAllFacilityInfo );
+owner_update_facility_front_end.php:	$AFacility = $objGetAllFacilityInfo->fetch_array( MYSQLI_ASSOC );
+owner_update_facility_front_end.php:	$objGetAllFacilityInfo->free_result();
+owner_update_facility_front_end.php:	$objGetAccomodations = $mysqli->query( $sAccomodationsProvided );
+owner_update_facility_front_end.php:		$AnArray = $objGetAccomodations->fetch_array( MYSQLI_ASSOC );
+owner_update_facility_front_end.php:		$objGetAccomodations->free_result();
+owner_update_facility_front_end.php:	$objGetServices = $mysqli->query( $sGetServices );
+owner_update_facility_front_end.php:		$AnArray = $objGetServices->fetch_array( MYSQLI_ASSOC );
+owner_update_facility_front_end.php:		$objGetServices->free_result();
+owner_update_facility_front_end.php:$objGetAllFacilityPriceInfo = $mysqli->query( $sGetAllFacilityPriceInfo );
+owner_update_facility_front_end.php:	$AFacilityPriceInfo = $objGetAllFacilityPriceInfo->fetch_array( MYSQLI_ASSOC );
+owner_update_facility_front_end.php:	$objGetAllFacilityPriceInfo->free_result();
+owner_update_facility_front_end.php:	<meta charset="utf-8"/>
+owner_update_facility_front_end.php:	<meta name="viewport" content="width=device-width, initial-scale=1">
+owner_update_facility_front_end.php:	<?php include( '../common/header.php' );?> <!--worked -->
+owner_update_facility_front_end.php:	      background-image: url("/img/sample1.jpg");
+owner_update_facility_front_end.php:	  <!-- Added for tabs -->
+owner_update_facility_front_end.php:	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/start/jquery-ui.css">
+owner_update_facility_front_end.php:	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+owner_update_facility_front_end.php:	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+owner_update_facility_front_end.php:	<!-- Need these break lines to prevent the navigation bar hiding the top lines. -->
+owner_update_facility_front_end.php:<!-- Facility Detail -->
+owner_update_facility_front_end.php:        <div class="container-fluid">
+owner_update_facility_front_end.php:          <div class="form-group">
+owner_update_facility_front_end.php:	    <li><a href="#bbtab-1"><span>*General Admin</span></a></li>
+owner_update_facility_front_end.php:	    <li><a href="#bbtab-2"><span>Accommodations</span></a></li>
+owner_update_facility_front_end.php:	    <li><a href="#bbtab-3"><span>Amenities & Services</span></a></li>
+owner_update_facility_front_end.php:	    <li><a href="#bbtab-4"><span>Pricing</span></a></li>
+owner_update_facility_front_end.php:	    <li><a href="#bbtab-5"><span>Map & Direction</span></a></li>
+owner_update_facility_front_end.php:	  <div id="bbtab-1">
+owner_update_facility_front_end.php:	    <div class="container-fluid">
+owner_update_facility_front_end.php:            <div class="form-group">
+owner_update_facility_front_end.php:		 <div class="col-md-4">
+owner_update_facility_front_end.php:                 <!-- form action="Add_new_facility.php" method="get" autocomplete="on" -->
+owner_update_facility_front_end.php:		 <div class="col-md-8" style="color:blue;background-color:lightgray;">
+owner_update_facility_front_end.php:	  <div id="bbtab-2" style="color:blue;">
+owner_update_facility_front_end.php:            <div class="container-fluid">
+owner_update_facility_front_end.php:            <div class="form-group">
+owner_update_facility_front_end.php:            There are comfortable and affordable shared room as well as semi-private and private rooms for more needed quiet & privacy.</p>
+owner_update_facility_front_end.php:            <input type="checkbox" name="accomodation[]" id="accomodation" value="2" <?php if( $A2 == '1' ) echo "Checked='Checked'";?>> Semi-Private Room <br>
+owner_update_facility_front_end.php:	  <div id="bbtab-3" style="color:blue;">
+owner_update_facility_front_end.php:            <div class="container-fluid">
+owner_update_facility_front_end.php:            <div class="form-group">
+owner_update_facility_front_end.php:            Included amenities & services - <br>
+owner_update_facility_front_end.php:            Fee based services - <br>
+owner_update_facility_front_end.php:	  <div id="bbtab-4" style="color:blue;">
+owner_update_facility_front_end.php:	    <div class="container-fluid">
+owner_update_facility_front_end.php:		 <div class="col-md-4">
+owner_update_facility_front_end.php:		     <dt>Semi-private:</dt><dd>From<input type="number" name="semi_min" min="1500" max="8000" value=<?php echo $semi_private_min_price;?>><br><br>__To<input type="number" name="semi_max" min="2000" max="10000" value=<?php echo $semi_private_max_price;?>></dd>
+owner_update_facility_front_end.php:                                                  <input type="number" name="avail_semi" min="0" max="1000" value=<?php echo $semi_priv_available;?>><>Semi-private<br>
+owner_update_facility_front_end.php:         <div class="col-md-8" style="background-color:lightgray;">
+owner_update_facility_front_end.php:  <div id="bbtab-5">
+owner_update_facility_front_end.php:    <div class="container-fluid">
+owner_update_facility_front_end.php:        <div class="col-md-offset-4 col-md-8" style="color:blue;background-color:lightgray;">
+owner_update_facility_front_end.php:</div> <!-- tabs end --> 
+owner_update_facility_front_end.php:</div> <!-- tabs container end -->
+owner_update_facility_front_end.php.bak:#   ------     ---------    ----------
+owner_update_facility_front_end.php.bak:#   Bac        06-11-15     Created.
+owner_update_facility_front_end.php.bak:#   James      06-21-15     Filled in text inputs from 
+owner_update_facility_front_end.php.bak://$mysqli->close();
+owner_update_facility_front_end.php.bak:$objGetAllFacilityInfo = $mysqli->query( $sGetAllFacilityInfo );
+owner_update_facility_front_end.php.bak:	$AFacility = $objGetAllFacilityInfo->fetch_array( MYSQLI_ASSOC );
+owner_update_facility_front_end.php.bak:	$objGetAllFacilityInfo->free_result();
+owner_update_facility_front_end.php.bak:	<meta charset="utf-8"/>
+owner_update_facility_front_end.php.bak:	<meta name="viewport" content="width=device-width, initial-scale=1">
+owner_update_facility_front_end.php.bak:	<?php include( '../common/header.php' );?> <!--worked -->
+owner_update_facility_front_end.php.bak:	      background-image: url("/img/sample1.jpg");
+owner_update_facility_front_end.php.bak:	  <!-- Added for tabs -->
+owner_update_facility_front_end.php.bak:	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/start/jquery-ui.css">
+owner_update_facility_front_end.php.bak:	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+owner_update_facility_front_end.php.bak:	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+owner_update_facility_front_end.php.bak:	<!-- Need these break lines to prevent the navigation bar hiding the top lines. -->
+owner_update_facility_front_end.php.bak:<!-- Facility Detail -->
+owner_update_facility_front_end.php.bak:        <div class="container-fluid">
+owner_update_facility_front_end.php.bak:          <div class="form-group">
+owner_update_facility_front_end.php.bak:	    <li><a href="#bbtab-1"><span>*General Admin</span></a></li>
+owner_update_facility_front_end.php.bak:	    <li><a href="#bbtab-2"><span>Accommodations</span></a></li>
+owner_update_facility_front_end.php.bak:	    <li><a href="#bbtab-3"><span>Amenities & Services</span></a></li>
+owner_update_facility_front_end.php.bak:	    <li><a href="#bbtab-4"><span>Pricing</span></a></li>
+owner_update_facility_front_end.php.bak:	    <li><a href="#bbtab-5"><span>Map & Direction</span></a></li>
+owner_update_facility_front_end.php.bak:	  <div id="bbtab-1">
+owner_update_facility_front_end.php.bak:	    <div class="container-fluid">
+owner_update_facility_front_end.php.bak:            <div class="form-group">
+owner_update_facility_front_end.php.bak:		 <div class="col-md-4">
+owner_update_facility_front_end.php.bak:                 <!-- form action="Add_new_facility.php" method="get" autocomplete="on" -->
+owner_update_facility_front_end.php.bak:		 <div class="col-md-8" style="color:blue;background-color:lightgray;">
+owner_update_facility_front_end.php.bak:	  <div id="bbtab-2" style="color:blue;">
+owner_update_facility_front_end.php.bak:            <div class="container-fluid">
+owner_update_facility_front_end.php.bak:            <div class="form-group">
+owner_update_facility_front_end.php.bak:            There are comfortable and affordable shared room as well as semi-private and private rooms for more needed quiet & privacy.</p>
+owner_update_facility_front_end.php.bak:            <input type="checkbox" name="semi-private" value="yes"> Semi-Private Room <br>
+owner_update_facility_front_end.php.bak:            <input type="checkbox" name="secure-quiet" value="yes"> Secure and quiet neighborhood <br>
+owner_update_facility_front_end.php.bak:            <input type="checkbox" name="light-spacious" value="yes"> Light and spacious rooms <br>
+owner_update_facility_front_end.php.bak:            <input type="checkbox" name="alarm-access" value="yes"> Fire Alarms & Wheelchair Access <br>
+owner_update_facility_front_end.php.bak:	  <div id="bbtab-3" style="color:blue;">
+owner_update_facility_front_end.php.bak:            <div class="container-fluid">
+owner_update_facility_front_end.php.bak:            <div class="form-group">
+owner_update_facility_front_end.php.bak:            Included amenities & services - <br>
+owner_update_facility_front_end.php.bak:            <input type="checkbox" name="social-events" value="yes"> Social events (i.e. birthday & holiday parties) <br>
+owner_update_facility_front_end.php.bak:            Fee based services - <br>
+owner_update_facility_front_end.php.bak:            <input type="checkbox" name="sepcial-diet" value="yes"> Special diet <br>
+owner_update_facility_front_end.php.bak:	  <div id="bbtab-4" style="color:blue;">
+owner_update_facility_front_end.php.bak:	    <div class="container-fluid">
+owner_update_facility_front_end.php.bak:		 <div class="col-md-4">
+owner_update_facility_front_end.php.bak:		     <dt>Semi-private:</dt><dd>From<input type="number" name="semi_min" min="1500" max="8000"><br>__To<input type="number" name="semi_max" min="2000" max="10000"></dd>
+owner_update_facility_front_end.php.bak:                                                  <input type="number" name="avail_semi" min="0" max="1000">Semi-private<br>
+owner_update_facility_front_end.php.bak:         <div class="col-md-8" style="background-color:lightgray;">
+owner_update_facility_front_end.php.bak:  <div id="bbtab-5">
+owner_update_facility_front_end.php.bak:    <div class="container-fluid">
+owner_update_facility_front_end.php.bak:        <div class="col-md-offset-4 col-md-8" style="color:blue;background-color:lightgray;">
+owner_update_facility_front_end.php.bak:</div> <!-- tabs end --> 
+owner_update_facility_front_end.php.bak:</div> <!-- tabs container end -->
+owner_update_facility.php://  DATE;  06-26-15
+owner_update_facility.php:	$objCheckIfARowExists1 = $mysqli->query( $sCheckIfARowExists1 ) or die( $mysqli->erro );
+owner_update_facility.php:		$anArray = $objCheckIfARowExists1->fetch_array( MYSQLI_ASSOC );
+owner_update_facility.php:		$objCheckIfARowExists1->free_result();
+owner_update_facility.php:		//$CurrTime = date( 'Y-m-d H-i-s');
+owner_update_facility.php:		$mysqli->autocommit( FALSE );
+owner_update_facility.php:		$mysqli->query($sUpdateFacilityAccomodations) or die($mysqli->error);
+owner_update_facility.php:	        if( $mysqli->commit())
+owner_update_facility.php:                	$mysqli->rollback();
+owner_update_facility.php:		$CurrTime = date( 'Y-m-d H-i-s');
+owner_update_facility.php:		$mysqli->autocommit( FALSE );	
+owner_update_facility.php:		$mysqli->query($sInsertFacility) or die($mysqli->error);
+owner_update_facility.php:	        if( $mysqli->commit())
+owner_update_facility.php:                	$mysqli->rollback();
+owner_update_facility.php:	$objCheckIfARowExists2 = $mysqli->query( $sCheckIfARowExists2 ) or die( $mysqli->error );
+owner_update_facility.php:		$anArray = $objCheckIfARowExists2->fetch_array( MYSQLI_ASSOC );
+owner_update_facility.php:		$objCheckIfARowExists2->free_result();
+owner_update_facility.php:		//$CurrTime = date( 'Y-m-d H-i-s');
+owner_update_facility.php:		$mysqli->autocommit( FALSE );
+owner_update_facility.php:		$mysqli->query($sUpdateFacilityService) or die($mysqli->error);
+owner_update_facility.php:		if( $mysqli->commit())
+owner_update_facility.php:                	$mysqli->rollback();
+owner_update_facility.php:		$mysqli->autocommit( FALSE );
+owner_update_facility.php:		$mysqli->query($sInsertFacilityService) or die($mysqli->error);
+owner_update_facility.php:	        if( $mysqli->commit())
+owner_update_facility.php:                	$mysqli->rollback();
+owner_update_facility.php:echo "---------------------------------------</br>";
+owner_update_facility.php:	$objCheckIfARowExists3 = $mysqli->query( $sCheckIfARowExists3 ) or die( $mysqli->error );
+owner_update_facility.php:		$anArray = $objCheckIfARowExists3->fetch_array( MYSQLI_ASSOC );
+owner_update_facility.php:		$objCheckIfARowExists3->free_result();
+owner_update_facility.php:		//$CurrTime = date( 'Y-m-d H-i-s');
+owner_update_facility.php:		$mysqli->autocommit( FALSE );
+owner_update_facility.php:		$mysqli->query($sUpdateFacilityPrice_Special_Available) or die($mysqli->error);
+owner_update_facility.php:	        if( $mysqli->commit())
+owner_update_facility.php:                	$mysqli->rollback();
+owner_update_facility.php:		$mysqli->autocommit( FALSE );
+owner_update_facility.php:		$mysqli->query($sUpdateFacilityPrice_Special_Available) or die($mysqli->error);
+owner_update_facility.php:	        if( $mysqli->commit())
+owner_update_facility.php:                	$mysqli->rollback();
+yyy.php:#--------------------------------
+yyy.php:#Irvine    03-13-15 Implemented CSFR prevention.
+yyy.php:  <title>4BABOOM.COM - Owner Login or Register</title>
+yyy.php:  <meta charset="utf-8>
+yyy.php:  <meta name="viewport" content="width=device-width, initial-scale=1">
+yyy.php:      background-image: url("sample3.gif");
+yyy.php:<!-- Page Header -->
+yyy.php:  <div class="col-sm-12" style="background-color:#0000FF">
+yyy.php:    <h4><img src="file:///c:\BTT\4baboom\4baboom-logo.jpg" alt="4BABOOM LOGO" class="img-rounded" style="width:50px;height:50px"><small><span class="glyphicon glyphicon-home"></span><a href="file:///c:\BTT\4baboom\index-4baboom.html"> Senior for Senior Online Community</a></small></h4>
+yyy.php:<!-- Header - Navigation Bar -->
+yyy.php:<nav class="navbar navbar-inverse" style="background-color:#191970">
+yyy.php:  <div class="container-fluid">
+yyy.php:    <!-- Logo and toggle get grouped for better mobile display -->
+yyy.php:    <div class="navbar-header">
+yyy.php:      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-4baboom-navbar-collapse-1">
+yyy.php:        <span class="sr-only">Toggle navigation</span>
+yyy.php:        <span class="icon-bar"></span>
+yyy.php:        <span class="icon-bar"></span>
+yyy.php:        <span class="icon-bar"></span>
+yyy.php:      <a class="navbar-brand" href="#">4BABOOM.COM - OWNER</a>
+yyy.php:    <!-- Collect the nav links, forms, and other content for toggling -->
+yyy.php:    <div class="collapse navbar-collapse" id="bs-4baboom-navbar-collapse-1">
+yyy.php:      <ul class="nav navbar-nav">
+yyy.php:        <li><a href="file:///c:\BTT\4baboom\index-4baboom.html">Home <span class="sr-only">(current)</span></a></li>
+yyy.php:          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Member <span class="caret"></span></a>
+yyy.php:          <ul class="dropdown-menu" role="menu">
+yyy.php:      <ul class="nav navbar-nav navbar-right">
+yyy.php:          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Facility Owner <span class="caret"></span></a>
+yyy.php:          <ul class="dropdown-menu" role="menu">
+yyy.php:            <li><a href="file:///c:\BTT\4baboom\facility-owner\owner-login-register.html">Register or Login</a></li>
+yyy.php:    </div><!-- /.navbar-collapse -->
+yyy.php:  </div><!-- /.container-fluid -->
+yyy.php:<!-- Owner Login or Register Start -->
+yyy.php:<!-- Login Form -->
+yyy.php:  <h3><span class="glyphicon glyphicon-heart"></span>Lets recover your password.-</h3>
+yyy.php:<!--<h4><span class="glyphicon glyphicon-log-in"></span><b> </b>Please fill in the email...<h4> -->
+yyy.php:<form method="post" class="form-horizontal" action="reset_owner_password.php">
+yyy.php:  <div class="form-group">
+yyy.php:    <h4><label for="old_password" class="col-sm-2 control-label">old password:</label><h4>
+yyy.php:    <div class="col-sm-4">
+yyy.php:      <input type="password" class="form-control" id="old_password" name="old_password" placeholder="password">
+yyy.php:	<h4><label for="new_password1" class="col-sm-2 control-label">new password:</label><h4>
+yyy.php:    <div class="col-sm-4">
+yyy.php:      <input type="password" class="form-control" id="new_password1" name="new_password1" placeholder="password">
+yyy.php:	<h4><label for="new_password2" class="col-sm-2 control-label">confirm password:</label><h4>
+yyy.php:    <div class="col-sm-4">
+yyy.php:      <input type="password" class="form-control" id="new_password2" name="new_password2" placeholder="password">
+yyy.php:  <div class="form-group">
+yyy.php:  <div class="col-sm-offset-2 col-sm-10">
+yyy.php:    <button type="submit" class="btn btn-primary">Login</button>
+yyy.php:<!-- Owner Login or Register End -->
